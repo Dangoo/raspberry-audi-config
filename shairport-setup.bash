@@ -1,3 +1,8 @@
+# Update system
+echo "Updating system…"
+apt-get update
+apt-get upgrade
+
 # Install dependencies
 echo "Installing dependencies…"
 
