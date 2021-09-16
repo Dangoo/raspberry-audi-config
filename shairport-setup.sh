@@ -1,5 +1,3 @@
-cd ~
-
 # Update system
 echo "Updating system…"
 apt-get update
@@ -11,6 +9,19 @@ echo "Installing dependencies…"
 apt install --no-install-recommends build-essential git xmltoman autoconf automake libtool \
     libpopt-dev libconfig-dev libasound2-dev avahi-daemon libavahi-client-dev libssl-dev libsoxr-dev libglib2.0-dev \
     libplist-dev libsodium-dev libavutil-dev libavcodec-dev libavformat-dev uuid-dev libgcrypt-dev
+
+echo "Configuring sound output"
+
+if [ -e /etc/asound.conf ]; then
+    if [ -e /etc/asound.conf.old ]; then
+        sudo rm -f /etc/asound.conf.old
+    fi
+    sudo mv /etc/asound.conf /etc/asound.conf.old
+fi
+
+cp -i asound.conf /etc
+
+cd ~
 
 # Install nqptp
 echo "Installing nqptp…"
