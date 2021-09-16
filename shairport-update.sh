@@ -2,8 +2,8 @@ cd ~
 
 # Update system
 echo "Updating system…"
-apt-get update
-apt-get upgrade
+sudo apt-get update
+sudo apt-get upgrade
 
 # Install nqptp
 echo "Updating nqptp…"
@@ -12,7 +12,7 @@ cd ~/nqptp/
 
 git fetch
 
-if $(git rev-parse HEAD) != $(git rev-parse @{u}); then
+if [[ $(git rev-parse HEAD) != $(git rev-parse @{u}) ]]; then
     git pull
     autoreconf -fi
     ./configure
@@ -35,7 +35,7 @@ echo "Updating shairport-sync…"
 
 cd ~/shairport-sync/
 
-if $(git rev-parse HEAD) != $(git rev-parse @{u}); then
+if [[ $(git rev-parse HEAD) != $(git rev-parse @{u}) ]]; then
     git pull
     autoreconf -fi
     ./configure --sysconfdir=/etc --with-alsa \
