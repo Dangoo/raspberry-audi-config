@@ -11,6 +11,7 @@ cp -i asound.conf /etc
 ### Configure shairport-sync user
 ```
 # /etc/systemd/system/shairport-sync.service
+[Service]
 User=pi
 Group=pi
 ```
@@ -28,5 +29,18 @@ Group=pi
   ```
   https://wiki.cyberleo.net/wiki/KnowledgeBase/AlsaEqual
 
+### Setup I2s Speaker Bonnet (optional)
 
+Run shell script from [Adafruits guide](https://learn.adafruit.com/adafruit-speaker-bonnet-for-raspberry-pi/raspberry-pi-usage):
+```bash
+curl -sS https://raw.githubusercontent.com/adafruit/Raspberry-Pi-Installer-Scripts/master/i2samp.sh | bash
+```
 
+If you have trouble with the "popping"  helper `aplay` try to add a user to service config:
+
+```
+# /etc/systemd/system/aplay.service
+[Service]
+User=pi
+Group=pi
+```
