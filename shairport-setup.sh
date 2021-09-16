@@ -39,10 +39,11 @@ autoreconf -fi
     --with-soxr --with-avahi --with-ssl=openssl --with-systemd --with-dbus-interface --with-airplay-2
 make -j
 make install
+
 cd ~
 
 # Start shairport-sync
-echo "Starting shairpot-sync…"
+echo "Starting shairport-sync…"
 
 systemctl enable shairport-sync
 systemctl start shairport-sync
