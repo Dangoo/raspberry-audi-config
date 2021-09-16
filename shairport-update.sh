@@ -16,7 +16,7 @@ if $(git rev-parse HEAD) != $(git rev-parse @{u}); then
     git pull
     autoreconf -fi
     ./configure
-    make
+    sudo make
     make install
     echo "Updated successfully"
 
@@ -27,7 +27,8 @@ fi
 # Restart nqptp daemon
 echo "Restarting nqptp…"
 
-systemctl restart nqptp
+sudo systemctl daemon-reload
+sudo systemctl restart nqptp
 
 # Install shairport-sync
 echo "Updating shairport-sync…"
@@ -39,7 +40,7 @@ if $(git rev-parse HEAD) != $(git rev-parse @{u}); then
     autoreconf -fi
     ./configure --sysconfdir=/etc --with-alsa \
         --with-soxr --with-avahi --with-ssl=openssl --with-systemd --with-dbus-interface --with-airplay-2
-    make -j
+    sudo make -j
     make install
     echo "Updated successfully"
 
@@ -50,6 +51,7 @@ fi
 # Restart shairport-sync
 echo "Restarting shairport-sync…"
 
-systemctl restart shairport-sync
+sudo systemctl daemon-reload
+sudo systemctl restart shairport-sync
 
 cd ~
