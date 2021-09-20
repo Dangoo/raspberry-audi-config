@@ -1,4 +1,4 @@
-# raspberry-audi-config
+# raspberry-audio-config
 Template for setting up a Raspberry Pi with Shairport-Sync
 
 ## Setting up equalizer
