@@ -35,11 +35,13 @@ echo "Updating shairport-sync…"
 
 cd ~/shairport-sync/
 
+git fetch
+
 if [[ $(git rev-parse HEAD) != $(git rev-parse @{u}) ]]; then
     git pull
     autoreconf -fi
     ./configure --sysconfdir=/etc --with-alsa \
-        --with-soxr --with-avahi --with-ssl=openssl --with-systemd --with-dbus-interface --with-airplay-2
+        --with-soxr --with-avahi --with-ssl=openssl --with-systemd --with-airplay-2
     sudo make -j
     make install
     echo "Updated successfully"
