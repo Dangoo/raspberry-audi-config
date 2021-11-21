@@ -8,7 +8,7 @@ sudo apt-get upgrade
 # Install nqptp
 echo "Updating nqptp…"
 
-cd ~/nqptp/
+cd -- "$(find ~ -name nqptp -type d)"
 
 git fetch
 
@@ -33,7 +33,7 @@ sudo systemctl restart nqptp
 # Install shairport-sync
 echo "Updating shairport-sync…"
 
-cd ~/shairport-sync/
+cd -- "$(find ~ -name shairport-sync -type d)"
 
 git fetch
 
