@@ -17,7 +17,7 @@ if [[ $(git rev-parse HEAD) != $(git rev-parse @{u}) ]]; then
     autoreconf -fi
     ./configure
     sudo make
-    make install
+    sudo make install
     echo "Updated successfully"
 
 else
@@ -43,7 +43,7 @@ if [[ $(git rev-parse HEAD) != $(git rev-parse @{u}) ]]; then
     ./configure --sysconfdir=/etc --with-alsa \
         --with-soxr --with-avahi --with-ssl=openssl --with-systemd --with-airplay-2
     sudo make -j
-    make install
+    sudo make install
     echo "Updated successfully"
 
 else
