@@ -15,7 +15,7 @@ git fetch
 if [[ $(git rev-parse HEAD) != $(git rev-parse @{u}) ]]; then
     git pull
     autoreconf -fi
-    ./configure
+    ./configure --with-systemd-startup
     sudo make
     sudo make install
     echo "Updated successfully"
