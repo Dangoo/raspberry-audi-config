@@ -1,3 +1,4 @@
+#!/bin/bash
 # Update system
 echo "Updating system…"
 apt-get update
