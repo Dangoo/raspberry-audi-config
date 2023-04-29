@@ -22,18 +22,23 @@ fi
 
 cp -i asound.conf /etc
 
+# Move to user $HOME
 cd ~
+echo "Changed working directory to $PWD"
 
 # Install nqptp
 echo "Installing nqptp…"
 
 git clone https://github.com/mikebrady/nqptp.git
 cd nqptp
+echo "Changed working directory to $PWD"
 autoreconf -fi
 ./configure --with-systemd-startup
 make
 make install
+
 cd ~
+echo "Changed working directory to $PWD"
 
 # Start nqptp daemon
 echo "Starting nqptp…"
@@ -46,6 +51,7 @@ echo "Installing shairport-sync…"
 
 git clone --branch development https://github.com/mikebrady/shairport-sync.git
 cd shairport-sync
+echo "Changed working directory to $PWD"
 autoreconf -fi
 ./configure --sysconfdir=/etc --with-alsa \
     --with-soxr --with-avahi --with-ssl=openssl --with-systemd --with-airplay-2
@@ -53,6 +59,7 @@ make -j
 make install
 
 cd ~
+echo "Changed working directory to $PWD"
 
 # Start shairport-sync
 echo "Starting shairport-sync…"
