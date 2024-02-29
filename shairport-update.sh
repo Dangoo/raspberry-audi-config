@@ -4,7 +4,7 @@ cd ~
 # Update system
 echo "Updating system…"
 sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get upgrade -y
 
 # Install nqptp
 echo "Updating nqptp…"
