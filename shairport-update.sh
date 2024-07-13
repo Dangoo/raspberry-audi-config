@@ -13,7 +13,11 @@ cd -- "$(find ~ -name nqptp -type d)"
 
 git fetch
 
-if [[ $(git rev-parse HEAD) != $(git rev-parse @{u}) ]]; then
+CURRENT_NQPTP_TAG=$(git describe --tags --abbrev=0)
+NEW_NQPTP_TAG=$(git tag -l --sort=v:refname | grep -o '^[0-9]\+\.[0-9]\+\.[0-9]\+$' | tail -1)
+
+if dpkg --compare-versions $CURRENT_NQPTP_TAG "lt" $NEW_NQPTP_TAG; then
+    echo "Updating nqptp from ${CURRENT_NQPTP_TAG} to ${NEW_NQPTP_TAG}"
     git pull
     autoreconf -fi
     ./configure --with-systemd-startup
@@ -38,7 +42,11 @@ cd -- "$(find ~ -name shairport-sync -type d)"
 
 git fetch
 
-if [[ $(git rev-parse HEAD) != $(git rev-parse @{u}) ]]; then
+CURRENT_SHAIRPORT_TAG=$(git describe --tags --abbrev=0)
+NEW_SHAIRPORT_TAG=$(git tag -l --sort=v:refname | grep -o '^[0-9]\+\.[0-9]\+\.[0-9]\+$' | tail -1)
+
+if dpkg --compare-versions $CURRENT_SHAIRPORT_TAG "lt" $NEW_SHAIRPORT_TAG; then
+    echo "Updating shairport-sync from ${CURRENT_SHAIRPORT_TAG} to ${NEW_SHAIRPORT_TAG}"
     git pull
     autoreconf -fi
     ./configure --sysconfdir=/etc --with-alsa \

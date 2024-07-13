@@ -1,8 +1,8 @@
 #!/bin/bash
 # Update system
 echo "Updating system…"
-apt-get update
-apt-get upgrade
+apt update
+apt upgrade
 
 # Install dependencies
 echo "Installing dependencies…"

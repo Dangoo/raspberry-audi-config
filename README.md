@@ -1,6 +1,14 @@
 # raspberry-audio-config
 Template for setting up a Raspberry Pi with Shairport-Sync
 
+## Prerequisite
+
+Executing the setup and update scripts using `sudo` will install to `/root` instead of `/home`.
+You might consider setting the env configuration in the `sudoers` file [accordingly](https://unix.stackexchange.com/a/91572):
+```
+Defaults env_keep += "HOME"
+```
+
 ## Setting up equalizer
 
 ### Adding `asound.conf`
